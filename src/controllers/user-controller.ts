@@ -48,7 +48,9 @@ class UserController {
         password: passwordHash,
       });
 
-      return res.status(201).json({ name, email });
+      const ok = true;
+
+      return res.status(201).json({ name, email, ok });
     } catch (error) {
       next(error);
     }
@@ -105,7 +107,9 @@ class UserController {
         token,
       };
 
-      return res.json(userData);
+      const ok = true;
+
+      return res.json({ ...userData, ok });
     } catch (error) {
       next(error);
     }
