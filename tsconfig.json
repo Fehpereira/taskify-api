@@ -2,8 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2023"],
-    // Remova rootDir por enquanto para este teste
-    // "rootDir": "src",
+
     "outDir": "build",
     "paths": {
       "@/*": ["./src/*"]
@@ -15,8 +14,6 @@
     "strict": false,
     "skipLibCheck": true
   },
-  "include": [
-    "knexfile.ts" // Teste apenas com este arquivo
-  ],
+  "include": ["src/**/*.ts", "knexfile.ts"],
   "exclude": ["node_modules", "build"]
 }
