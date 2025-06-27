@@ -1,2 +1,26 @@
+# Node.js
+node_modules/
 .env
-node_modules
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Editor
+.vscode/
+.idea/
+
+# Optional (caso use no deploy ou testes)
+*.sqlite
+*.sqlite-journal
+knexfile.js

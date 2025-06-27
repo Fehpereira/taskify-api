@@ -30,11 +30,9 @@ class UserController {
       const { name, email, password } = bodySchema.parse(req.body);
 
       const existingUser = await knex<UserRepository>('users')
-        .select('')
+        .select()
         .where({ email })
         .first();
-
-      console.log(existingUser);
 
       if (existingUser) {
         throw new AppError('Esse e-mail já foi cadastrado!');
@@ -62,19 +60,13 @@ class UserController {
         email: z
           .string()
           .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Email inválido!'),
-        password: z
-          .string()
-          .min(8, 'Senha incorreta')
-          .regex(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9])\S{8,}$/,
-            'Senha incorreta',
-          ),
+        password: z.string().min(8, 'Senha incorreta'),
       });
 
       const { email, password } = bodySchema.parse(req.body);
 
       const existingUser: UserRepository = await knex<UserRepository>('users')
-        .select('')
+        .select()
         .where({ email })
         .first();
 
@@ -86,6 +78,10 @@ class UserController {
 
       if (!passwordMatch) {
         throw new AppError('Senha incorreta!');
+      }
+
+      if (!process.env.JWT_SECRET) {
+        throw new Error('JWT_SECRET não definido nas variáveis de ambiente');
       }
 
       const token = sign(

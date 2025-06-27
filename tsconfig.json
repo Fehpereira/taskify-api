@@ -3,7 +3,8 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2023"],
-
+    "rootDir": "src",
+    "outDir": "build",
     "paths": {
       "@/*": ["./src/*"]
     },
