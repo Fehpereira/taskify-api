@@ -1,19 +1,22 @@
-//tsconfig.json
 {
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2023"],
-    "rootDir": "src",
+    // Remova rootDir por enquanto para este teste
+    // "rootDir": "src",
     "outDir": "build",
     "paths": {
       "@/*": ["./src/*"]
     },
-
     "module": "node16",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-
     "strict": false,
     "skipLibCheck": true
-  }
+  },
+  "include": [
+    "knexfile.ts" // Teste apenas com este arquivo
+  ],
+  "exclude": ["node_modules", "build"]
 }
