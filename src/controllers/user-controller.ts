@@ -1,5 +1,5 @@
-import { knex } from '@/database/knex';
-import { AppError } from '@/utils/AppError';
+import { knex } from '../database/knex';
+import { AppError } from '../utils/AppError';
 import { Response, Request, NextFunction } from 'express';
 import { hash, compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';

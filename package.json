@@ -1,12 +1,12 @@
 {
   "name": "taskify-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "knex": "node --import tsx ./node_modules/knex/bin/cli.js",
     "build": "tsc",
-    "start": "node build/src/server.js"
+    "start": "node -r tsconfig-paths/register build/server.js"
   },
   "author": "DevLipe",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.0.4",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   },

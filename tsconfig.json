@@ -2,10 +2,11 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2023"],
-
+    "rootDir": "src",
     "outDir": "build",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "a/*": ["./src/*"]
     },
     "module": "node16",
     "moduleResolution": "NodeNext",
@@ -14,6 +15,6 @@
     "strict": false,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "knexfile.ts"],
+  "include": ["src/**/*.ts", "knexfile.ts", "src/server.ts"],
   "exclude": ["node_modules", "build"]
 }
