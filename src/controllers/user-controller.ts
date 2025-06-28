@@ -9,7 +9,12 @@ import z from 'zod';
 class UserController {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
-      const users = await knex('users');
+      const users = await knex('users').select(
+        'id',
+        'name',
+        'email',
+        'created_at',
+      );
 
       if (users) {
         return res.json(users);
