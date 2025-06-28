@@ -7,6 +7,29 @@ import 'dotenv/config';
 import z from 'zod';
 
 class UserController {
+  async index(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+
+      if (!id) {
+        throw new AppError('ID is required', 400);
+      }
+
+      const user = await knex('users')
+        .select('id', 'name', 'email', 'created_at')
+        .where({ id: String(id).trim() })
+        .first();
+
+      if (user) {
+        return res.json(user);
+      } else {
+        return res.status(404).json();
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       const bodySchema = z.object({
